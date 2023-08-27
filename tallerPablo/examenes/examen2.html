@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examen2</title>
+</head>
+
+<body>
+    <script>
+
+        const weather_data = [
+            {
+                "country": "Spain",
+                "city": "Madrid",
+                "forecast": [
+                    {
+                        "date": "2023-05-29",
+                        "temperature": {
+                            "min": 15,
+                            "max": 25
+                        },
+                        "humidity": 60,
+                        "description": "Sunny"
+                    },
+                    {
+                        "date": "2023-05-30",
+                        "temperature": {
+                            "min": 18,
+                            "max": 28
+                        },
+                        "humidity": 55,
+                        "description": "Partly cloudy"
+                    },
+                    {
+                        "date": "2023-05-31",
+                        "temperature": {
+                            "min": 20,
+                            "max": 30
+                        },
+                        "humidity": 50,
+                        "description": "Clear skies"
+                    }
+                ]
+            },
+            {
+                "country": "United States",
+                "city": "New York",
+                "forecast": [
+                    {
+                        "date": "2023-05-29",
+                        "temperature": {
+                            "min": 12,
+                            "max": 22
+                        },
+                        "humidity": 70,
+                        "description": "Cloudy"
+                    },
+                    {
+                        "date": "2023-05-30",
+                        "temperature": {
+                            "min": 14,
+                            "max": 25
+                        },
+                        "humidity": 65,
+                        "description": "Rainy"
+                    },
+                    {
+                        "date": "2023-05-31",
+                        "temperature": {
+                            "min": 16,
+                            "max": 28
+                        },
+                        "humidity": 60,
+                        "description": "Thunderstorms"
+                    }
+                ]
+            },
+            {
+                "country": "France",
+                "city": "Paris",
+                "forecast": [
+                    {
+                        "date": "2023-05-29",
+                        "temperature": {
+                            "min": 14,
+                            "max": 24
+                        },
+                        "humidity": 55,
+                        "description": "Partly cloudy"
+                    },
+                    {
+                        "date": "2023-05-30",
+                        "temperature": {
+                            "min": 17,
+                            "max": 27
+                        },
+                        "humidity": 50,
+                        "description": "Sunny"
+                    },
+                    {
+                        "date": "2023-05-31",
+                        "temperature": {
+                            "min": 19,
+                            "max": 30
+                        },
+                        "humidity": 45,
+                        "description": "Clear skies"
+                    }
+                ]
+            }
+        ]
+
+        // Teniendo estos datos del clima de varios paises informar:
+        
+        // 1. Cuantos paises hay
+        x = 0;
+        weather_data.forEach(clima => {
+            x++;
+        });
+        console.log("Hay " + x + " Paises.");
+        console.log("");
+
+        // 2. Que día y en que pais se tiene la temperatura mas alta
+        temperatura = 0;
+        pais = "";
+        dia = "";
+        weather_data.forEach(clima => {
+            clima["forecast"].forEach(info => {
+                if (temperatura < info["temperature"]["max"]) {
+                    temperatura = info["temperature"]["max"];
+                    pais = clima["country"];
+                    dia = info["date"];
+                }
+
+            });
+        });
+        console.log(pais + " es el país con más temperatura contando con " + temperatura + "°C de máxima en la fecha " + dia);
+        console.log("");
+
+        // 3. En que pises va a llover en la semana
+        l = "";
+        weather_data.forEach(clima => {
+            clima["forecast"].forEach(info => {
+                if (info["description"]=="Rainy"){
+                    console.log("En " + clima["country"] + " va a llover en la semana.");
+                }
+            });
+        });
+        console.log("");
+
+        // 4. Promedio de temperatura minima y maxima de cada ciudad
+        weather_data.forEach(clima =>{
+            promedio = 0;
+            clima["forecast"].forEach(info =>{
+                promedio += info["temperature"]["min"] + info["temperature"]["max"];
+            });
+            promedio = (promedio / clima["forecast"].length).toFixed(2);
+            console.log("En " + clima["city"] + " el promedio de la temperatura es de " + promedio + "°C")
+        });
+
+
+    </script>
+</body>
+
+</html>

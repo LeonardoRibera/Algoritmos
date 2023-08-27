@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hola soy homelo chino</title>
+</head>
+<style>
+    td {
+        width: 100px;
+        height: 30px;
+    }
+
+    img {
+        width: 225px;
+        height: 153px;
+    }
+</style>
+
+<body>
+
+    <!-- 
+    1. Crear una tabla dinamica con los datos que utilizaron en el ejercicio anterior
+    2. Siempre en la primer columna mostrar la imagen que corresponda al auto. Si es volvo, tienen que tener una imagen que se llame volvo.jpg 
+       y asi con las otras, si no tiene imagen una generica en blanco y negro
+    3. Cuando hacen click en una fila tiene mostrar del lado derecho info sobre el auto, si no tiene un auto, mostrar un cartel sin informacion 
+    -->
+
+    <script>
+        var cars = ["Saab", "Volvo", "BMW", "FIAT"];
+        var img_cars = ["'imagenes/saab.jpg'", "'imagenes/volvo.jpg'", "'imagenes/bmw.jpg'", "'imagenes/fiat.jpg'"];
+        var desc_cars = ["desc_saab", "desc_volvo", "desc_bmw", "desc_fiat"];
+        desc_saab = "Saab Automobile AB es un consorcio sueco fabricante de automóviles con sede en la ciudad de Trollhättan, Suecia. Saab ha enfocado sus fábricas a la producción de automóviles de gama alta, destacando principalmente la potencia y fiabilidad de sus motores como la seguridad de sus vehículos.";
+        desc_volvo = "Volvo Cars (en sueco: Volvo personvagnar) es un fabricante premium de automóviles con sede en Gotemburgo, Suecia. Fundado en 1927 por el ingeniero Gustav Larson y el economista Assar Gabrielsson, como una empresa subsidiaria del fabricante de rodamientos SKF. Desde entonces, Volvo Cars ha sido líder mundial en tecnologías de seguridad e innovación automotriz, y una de las marcas de automóviles más conocidas y respetadas con ventas en más de 100 países.";
+        desc_bmw = "BMW es una de las marcas más innovadoras en la actualidad,  lo que demuestra apostando por vanguardias como la fabricación de carrocerías de fibra de carbono en serie para los BMW i3 (100 % eléctricos) o el espectacular superdeportivo híbrido, el BMW i8, que además es pionero en el uso de la tecnología láser en los faros.";
+        desc_fiat = "Fiat Automobiles -siglas de Fabbrica Italiana Automobili Torino (en español: Fábrica Italiana de Automóviles de Turín)- es una histórica marca italiana de automóviles, bajo la que se comercializan vehículos desde 1899, origen del mayor grupo industrial italiano, Fiat S.p.A., propiedad de Stellantis.";
+        normal = "Sin información"
+        tabla = "<table border='1'>";
+        tabla += "<tr align='center'>";
+        tabla += "<td>Foto</td><td>Marca</td><td rowspan=" + cars.length + 1 + "><p id='tuki'>Descripción del auto</p></td>";
+        tabla += "</tr>";
+        for (i = 0; i < cars.length; i++) {
+            tabla += "<tr align='center' onclick='descripcion(\"" + cars[i] + "\")'>";
+            tabla += "<td><img src=" + img_cars[i] + "></td><td>" + cars[i] + "</td>";
+            tabla += "</tr>";
+        }
+        tabla += "</table>"
+        document.write(tabla);
+        function descripcion(marca) {
+            switch (marca) {
+                case "Saab":
+                    document.getElementById("tuki").innerHTML = desc_saab;
+                    break;
+                case "Volvo":
+                    document.getElementById("tuki").innerHTML = desc_volvo;
+                    break;
+                case "BMW":
+                    document.getElementById("tuki").innerHTML = desc_bmw;
+                    break;
+                case "FIAT":
+                    document.getElementById("tuki").innerHTML = desc_fiat;
+                    break;
+                default:
+                    document.getElementById("tuki").innerHTML = normal;
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>

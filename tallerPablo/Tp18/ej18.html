@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+
+        // var notas = ['Pablo', 'Nadia', 'Marcos', 'Soledad'];
+        // for (i = 0; i < notas.length; i++) {
+        //     console.log(notas[i]);
+        // }
+
+        // var notas = [
+        //     { 'nombre': 'Pablo', 'apellido': 'Fiscella' },
+        //     { 'nombre': 'Nadia', 'apellido': 'Fiscella' },
+        //     { 'nombre': 'Marcos', 'apellido': 'Fiscella' },
+        //     { 'nombre': 'Soledad', 'apellido': 'Fiscella' }
+        // ];
+
+        // for (i = 0; i < notas.length; i++) {
+        //     console.log(notas[i]['nombre'] + ', ' + notas[i]['apellido']);
+        // }
+
+
+
+        // mostrar las notas que obtuvieron cada alumno:
+
+
+        // var alumnos = [
+        //     { 'nombre': 'Pablo', 'apellido': 'Fiscella', 'notas': [10, 2, 3] },
+        //     { 'nombre': 'Nadia', 'apellido': 'Fiscella', 'notas': [10, 5, 8] },
+        //     { 'nombre': 'Marcos', 'apellido': 'Fiscella', 'notas': [10, 4, 10] },
+        //     { 'nombre': 'Soledad', 'apellido': 'Fiscella', 'notas': [10, 2, 5] }
+        // ];
+
+        // for (i = 0; i < alumnos.length; i++) {
+        //     console.log(alumnos[i]['nombre'] + ', ' + alumnos[i]['apellido']);
+        //     for (o = 0; o < alumnos[i]['notas'].length; o++) {
+        //         console.log(alumnos[i]['notas'][o]);
+        //     }
+        // }
+
+
+
+
+
+
+        // crear un promedio de las notas de cada alumno:
+
+        var alumnos = [
+            { 'nombre': 'Pablo', 'apellido': 'Fiscella', 'notas': [10, 2, 3] },
+            { 'nombre': 'Nadia', 'apellido': 'Fiscella', 'notas': [10, 10, 10] },
+            { 'nombre': 'Marcos', 'apellido': 'Fiscella', 'notas': [10, 4, 5] },
+            { 'nombre': 'Soledad', 'apellido': 'Fiscella', 'notas': [10, 2, 5] }
+        ];
+        
+        for (i = 0; i < alumnos.length; i++) {
+            promedio = 0;
+            console.log(alumnos[i]['nombre'] + ', ' + alumnos[i]['apellido']);
+            for (o = 0; o < alumnos[i]['notas'].length; o++) {
+                promedio = promedio + alumnos[i]['notas'][o];
+            }
+            console.log(promedio / (alumnos[i]['notas'].length));
+        }
+
+    </script>
+
+</body>
+
+</html>

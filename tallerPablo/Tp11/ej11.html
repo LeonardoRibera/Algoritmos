@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ricas Pitusas</title>
+    <link rel="stylesheet">
+</head>
+<style>
+    input {
+        background-color: rgb(255, 169, 169);
+    }
+
+    .valid {
+        background-color: rgb(255, 255, 255);
+    }
+
+    button:disabled {
+        background-color: rgb(255, 255, 255);
+        cursor: not-allowed;
+    }
+
+    body {
+        background-color: rgb(255, 255, 255);
+    }
+</style>
+
+<body>
+
+    <!-- Tres cajas de texto
+    Comienza el ejercicio con las cajas de color de fondo rojo y el boton deshabilitado
+    Cuando escribo algo color de fondo blanco y cuando lo borro rojo
+    Cuando tengo los tres datos se habilita el boton.  -->
+
+    <input type="text" id="c1" value=""><br>
+    <input type="text" id="c2" value=""><br>
+    <input type="text" id="c3" value=""><br><br>
+    <button id="boton" disabled>siguiente</button>
+
+    <script>
+        const cuadro1 = document.getElementById('c1');
+        const cuadro2 = document.getElementById('c2');
+        const cuadro3 = document.getElementById('c3');
+        const boton = document.getElementById('boton');
+        function validar() {
+            let valido = true;
+            if (cuadro1.value.trim() === '') {
+                cuadro1.classList.remove('valid');
+                cuadro1.classList.add('invalid');
+                valido = false;
+            } else {
+                cuadro1.classList.add('valid');
+                cuadro1.classList.remove('invalid');
+            }
+            if (cuadro2.value.trim() === '') {
+                cuadro2.classList.remove('valid');
+                cuadro2.classList.add('invalid');
+                valido = false;
+            } else {
+                cuadro2.classList.add('valid');
+                cuadro2.classList.remove('invalid');
+            }
+            if (cuadro3.value.trim() === '') {
+                cuadro3.classList.remove('valid');
+                cuadro3.classList.add('invalid');
+                valido = false;
+            } else {
+                cuadro3.classList.add('valid');
+                cuadro3.classList.remove('invalid');
+            }
+            if (valido && cuadro1.value.trim() !== '' && cuadro2.value.trim() !== '' && cuadro3.value.trim() !== '') {
+                boton.disabled = false;
+            } else {
+                boton.disabled = true;
+            }
+        }
+        function accion() {
+            alert("listo capo");
+        }
+        cuadro1.addEventListener('input', validar);
+        cuadro2.addEventListener('input', validar);
+        cuadro3.addEventListener('input', validar);
+        boton.addEventListener('click', accion);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>si</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+</head>
+
+<body>
+    <script>
+        function page() {
+            var all_episode = 0;
+            $(document).ready(function () {
+                $.ajax({
+                    url: 'https://rickandmortyapi.com/api/episode',
+                    type: 'GET',
+                    dataType: 'json',
+                    async: false,
+                    success: function (data) {
+                        for (episode = 1; episode <= data['info']['pages']; episode++) {
+                            $.ajax({
+                                url: 'https://rickandmortyapi.com/api/episode?page=' + episode,
+                                type: 'GET',
+                                dataType: 'json',
+                                async: false,
+                                success: function (data) {
+                                    all_episode += data['results'].length;
+                                }
+                            })
+                        }
+                    }
+                })
+                $('#cargando').hide()
+                $('#content').html('Hay una cantidad de ' + all_episode + ' episodios en total.')
+            })
+        }
+
+
+
+    </script>
+
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#" onclick="page('a')">nose que poner aca</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div id="cargando">
+        Cargando...
+        <img width="80px" src="Loading_icon.gif">
+    </div>
+    <div id="content"></div>
+</body>
+
+</html>

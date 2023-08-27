@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RicasPitusas</title>
+</head>
+
+<body>
+
+    <table>
+        <tr>
+            <td>Valor 1</td>
+            <td><input id="Valor1" type='text' value=""></td>
+        </tr>
+        <tr>
+            <td>Valor 2</td>
+            <td><input id="Valor2" type='text' value=""></td>
+        </tr>
+        <tr>
+            <td><input onclick="verificar()" type="button" value="sumar"></td>
+        </tr>
+    </table>
+
+    <script>
+        function verificar() {
+            var v1 = document.getElementById("Valor1").value;
+            var v2 = document.getElementById("Valor2").value;
+            alert(parseInt(v1)+parseInt(v2));
+        }
+
+
+        //alert(i.value);
+    </script>
+</body>
+
+</html>

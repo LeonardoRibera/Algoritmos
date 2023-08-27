@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>primer examen ☺</title>
+</head>
+
+<body>
+    <!-- 
+        Teniendo 2 cajas de texto y un boton
+            1. Mostrar cual tiene mas caracteres
+            2. Con el valor de la primer caja de texto, mostrar los numeros del 10 al valor de la primer caja. Ejemplo: 
+                Si en la caja de texto 1 hay un uno imprimir en la pantalla del 1 al 10 de forma ascendente
+                Si el valor de la caja de texto 1es 100 mostrar del 100 al 10 en forma descendente
+            3. Si paso el cursor por una caja el color de la misma tiene que cambiar a rojo y cuando se van de la caja tiene que tener el color por default 
+    -->
+    <style>
+        .over {
+            background-color: rgb(255, 165, 165);
+        }
+    </style>
+
+    <input id="caja1" type="text" placeholder="Buen" onmouseover="cambiar1()" onmouseout="remover1()">
+    <input id="caja2" type="text" placeholder="Díaª" onmouseover="cambiar2()" onmouseout="remover2()">
+    <input id="boton" type="button" value="mostrar" onclick="verificar(
+                    document.getElementById('caja1').value,
+                    document.getElementById('caja2').value)">
+    <script>
+        function verificar(c1, c2) {
+            if (c1.length > c2.length) {
+                alert("La caja 1 tiene mayor caracter que la caja 2");
+            } else if (c1.length < c2.length) {
+                alert("La caja 2 tiene mayor caracter que la caja 1");
+            }
+            if (parseInt(c1) < 10) {
+                for (parseInt(c1); c1 <= 10; c1++) {
+                    document.write(c1 + "<br>");
+                }
+            } else if (parseInt(c1) > 10) {
+                for (parseInt(c1); c1 >= 10; c1--) {
+                    document.write(c1 + "<br>");
+                }
+            }
+        }
+        function cambiar1() {
+            document.getElementById("caja1").classList.add("over");
+        }
+        function remover1() {
+            document.getElementById("caja1").classList.remove("over");
+        }
+        function cambiar2() {
+            document.getElementById("caja2").classList.add("over");
+        }
+        function remover2() {
+            document.getElementById("caja2").classList.remove("over");
+        }
+    </script>
+</body>
+
+</html>

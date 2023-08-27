@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mi casa tio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="ej25.css">
+</head>
+
+<body>
+    <script>
+        let pag = 1
+        var genero = 0
+        function peli(gen) {
+            var src = "";
+            $(document).ready(function () {
+                $.ajax({
+                    url: 'https://api.themoviedb.org/3/discover/movie?api_key=ed6a6c3eff06810a0c74745800fe74bf&with_genres=' + gen + '&page=' + pag,
+                    type: 'GET',
+                    dataType: 'json',
+                    async: false,
+                    success: function (data) {
+                        for (i = 0; i < data["results"].length; i++) {
+                            src += "<div id='contenedor' class='col-6'>"
+                            src += "<div id='caja1' class='col-5'>"
+                                src += "<img src ='https://image.tmdb.org/t/p/w500" + data["results"][i]["poster_path"] + " '>" + "<br>"
+                                src += "</div>"
+                                src += "<div id='caja2' class='col'>"
+                                    src += "<h1>" + data["results"][i]["original_title"] + "</h1>" + "<br>"
+                                    src += "Languague: " + data["results"][i]["original_language"] + "<br><br>"
+                                    src += "Description: <br>" + data["results"][i]["overview"] + "<br><br>"
+                                    src += "Rate: " + data["results"][i]["vote_average"]
+                                    src += "</div>"
+                                    src += "</div>"
+                                }
+                            }
+                        })
+                        $("#movie").html(src)
+                    })
+            genero = gen;
+        }
+
+        function cambiarPagina(pages){
+            pag += pages;
+            if (pag < 1){
+                pag = 1
+            }
+            peli(genero);
+        }
+        
+        
+    </script>
+    <div class="content">
+        <button class="btn" onclick="peli(28)">Action</button>
+        <button class="btn" onclick="peli(27)">Horror</button>
+        <button class="btn" onclick="peli(16)">Animation</button>
+        <button class="btn" onclick="peli(35)">Comedy</button>
+        <button class="btn" onclick="peli(12)">Adventure</button>
+        <button class="btn" onclick="peli(878)">Science Fiction</button>
+        <button class="btn" onclick="peli(18)">Drama</button>
+        <button class="btn" onclick="peli(10402)">Music</button>
+        <button class="btn" onclick="peli(10752)">War</button>
+        <button class="btn" onclick="peli(80)">Crimen</button>
+    </div>
+    <div id="movie" class="col-6"></div>
+    <div id="pagination">
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+                <li class="page-item">
+                    <a onclick="cambiarPagina(-1)" class="page-link" href="#" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item">
+                    <a onclick="cambiarPagina(1)" class="page-link" href="#" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- https://api.themoviedb.org/3/discover/movie?api_key=ed6a6c3eff06810a0c74745800fe74bf&with_genres=28 -->
+    <!-- https://api.themoviedb.org/3/genre/movie/list?api_key=f5f6ff16d59df52e9bbe6b76f88b7886&language=$%7Blanguage%7D -->
+
+</body>

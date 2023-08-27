@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>norbeanjiofbda</title>
+</head>
+<body>
+    <!-- crear una tabla que te represente la potencia de 9 y que vaya hasta la 9 -->
+    <div id="pepe"></div>
+    <script>
+        var a = 9;
+        tabla = "<table border='1'><tr>";
+        for (b = 1; b <= 9; b++, a=a*9){
+            tabla += "<td>" + a + "</td>";
+        }
+        tabla += "</tr></table>";
+        document.getElementById("pepe").innerHTML = tabla;
+    </script>
+</body>
+</html>

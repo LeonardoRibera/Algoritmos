@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutancamon</title>
+</head>
+
+<body>
+    <!--
+        Teniendo este vector: ["Carlos", "Karina", "Luciana", "Mariana", "Dario", "Pedro"]
+        Armar cada punto con una funcion diferente
+
+        1. Cuantos nombres comienzan con una letra determinada por un parametro. ♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦
+        2. Pasarle a una funcion un nombre y que la funcion devuelva un valor booleano. ♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦
+        3. Eliminar la segunda posicion. ♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦
+        4. Devolver un texto que contenga todos los nombres separados por un guion. ♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦
+        5. Explotar el string e informar cuantos nombres contenia. 
+    -->
+
+    <script>
+
+        var nombres = ["Carlos", "Karina", "Luciana", "Mariana", "Dario", "Pedro"];
+
+        document.write("se encontró " + uno(nombres, "C") + " letra" + "<br><hr><br>");
+
+        if (dos(nombres, 'Karina')) {
+            document.write("se encontró el nombre<br><br><hr><br>");
+        } else {
+            document.write("no se encontró el nombre<br><hr><br>");
+        }
+
+        document.write(tres(nombres, "") + "<br><br><hr><br>");
+
+        document.write(cuatro(nombres, "") + "<br><hr>");
+
+        cinco(nombres, "hola");
+
+        document.write("<br><br><hr><br><br><br><br><br><br><br>");
+
+        
+
+        function uno(nombre1, letra) {
+            parametro = 0;
+            nombre1.forEach(primera_letra => {
+                if (primera_letra[0] == letra) {
+                    parametro++;
+                }
+            })
+            return parametro;
+        }
+
+        function dos(nombre2, llamar) {
+            return nombres.includes(llamar);
+            // nombre2.forEach(hola => {
+            //     if (hola == llamar) {
+            //         return true;
+            //     }
+            // })
+            // return false;
+        }
+
+        function tres(nombre3, borrar) {
+            document.write("Array original; <br>" + nombre3 + "<br><br>");
+            nom = nombre3.slice(1, 2);
+            nombre3.splice(1, 1);
+            document.write("Array modificado: <br>" + nombre3 + "<br>" + "(" + nom + " fue removido)");
+            return borrar;
+        }
+
+        function cuatro(nombre4, texto) {
+            nombre4.forEach(mucho_texto => {
+                document.write("-" + mucho_texto + "<br>");
+            })
+            return texto;
+        }
+
+        function cinco(nombre5, hola) {
+            tuki = "hola tu nariz contra mis bolas";
+            vec = tuki.split(" ");
+            document.write("<br>" + vec);
+            document.write("<br> el texto tiene " + tuki.split(" ").length + " palabras");
+        }
+
+    </script>
+
+</body>
+
+</html>

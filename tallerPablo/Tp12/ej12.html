@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ricas pitusinhas</title>
+</head>
+
+<body>
+    <!-- 
+    3 cajas de texto y un boton
+
+    1. Promedio de las tres cajas (al presionar el boton) LISTO
+    2. Cuantas cajas tienen el primer caracter con la letra 'A' (al presionar el boton) LISTO
+    3. Cuantos caracteres tiene cada caja de texto (automatico) LISTO
+    4. Cual es la suma de caracteres de todas las cajas. A medida que se va 
+       ingresando tiene que cambiar el resultado en la pantalla. (automatico) LISTO
+    5. Cuantas cajas de texto tienen en parte del texto la palabra "hola" (al presionar el boton) LISTO
+    -->
+    <tr>
+        <td><input id="caja1" type="text" placeholder="2 y 2 son 4"></td><br><br>
+        <td><input id="caja2" type="text" placeholder="4 y 2 son 6"></td><br><br>
+        <td><input id="caja3" type="text" placeholder="6 y 2 son 8"></td><br><br>
+    </tr>
+    <input id="boton" type="button" value="TUKI" onclick="promedio(
+                    (document.getElementById('caja1').value), 
+                    (document.getElementById('caja2').value), 
+                    (document.getElementById('caja3').value))"><br><br>
+    caja 1 contiene: <div id="pe"></div>
+    caja 2 contiene: <div id="dedo"></div>
+    caja 3 contiene: <div id="mano"></div>
+    en total hay:    <div id="pepe"></div>
+    <script>
+        var c1 = document.getElementById("caja1");
+        var c2 = document.getElementById("caja2");
+        var c3 = document.getElementById("caja3");
+        function promedio(v1, v2, v3) {
+            var LetrasA = 0;
+            var hola = 0;
+            if (v1[0] == 'a') {
+                LetrasA++;
+            }
+            if (v2[0] == 'a') {
+                LetrasA++;
+            }
+            if (v3[0] == 'a') {
+                LetrasA++;
+            }
+            if (LetrasA !== 0) {
+                alert("hay " + LetrasA + " caja/s con el primer caracter con A")
+            }
+            if (v1 == 'hola') {
+                hola++;
+            }
+            if (v2 == 'hola') {
+                hola++;
+            }
+            if (v3 == 'hola') {
+                hola++;
+            }
+            if (hola !== 0) {
+                alert("hay " + hola + " caja/s con la palabra hola");
+            }
+            else if (LetrasA == 0) {
+                var resultado = (parseInt(v1) + parseInt(v2) + parseInt(v3)) / 3;
+                alert("el promedio es " + resultado);
+                return resultado;
+            }
+        }
+        function verificar() {
+            var text1 = c1.value.length;
+            var text2 = c2.value.length;
+            var text3 = c3.value.length;
+            document.getElementById("pe").innerHTML = text1;
+            document.getElementById("dedo").innerHTML = text2;
+            document.getElementById("mano").innerHTML = text3;
+            document.getElementById("pepe").innerHTML = text3 + text2 + text1;
+        }
+        c1.addEventListener('input', verificar);
+        c2.addEventListener('input', verificar);
+        c3.addEventListener('input', verificar);
+    </script>
+</body>
+</html>

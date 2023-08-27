@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+
+
+        const tienda = {
+            "nombre": "Mi Tienda",
+            "productos": [
+                {
+                    "id": 1,
+                    "tipo": "Camisa",
+                    "nombre": "Camisa",
+                    "precio": 20,
+                    "variantes": [
+                        { "color": "Rojo", "stock": 10 },
+                        { "color": "Azul", "stock": 15 },
+                        { "color": "Verde", "stock": 5 }
+                    ]
+                },
+                {
+                    "id": 2,
+                    "tipo": "Pantalón",
+                    "nombre": "Pantalón",
+                    "precio": 30,
+                    "variantes": [
+                        { "color": "Negro", "stock": 20 },
+                        { "color": "Gris", "stock": 11 }
+                    ]
+                }
+            ]
+        };
+
+        //1 Imprimir el nombre de la tienda
+        console.log(tienda["nombre"]);
+        console.log("");
+
+        // 2 Consigna: Imprimir el precio de la segunda variante de la primera camisa
+        console.log(tienda["productos"][0]["precio"]);
+        console.log("");
+
+        // 3 Imprimir la cantidad de productos en la tienda
+        for (o = 0, x = 0; o < tienda["productos"].length; o++) { x++; }
+        console.log("hay " + x + " productos.");
+        console.log("");
+
+        // 4 Imprimir el stock de la variante "Azul" de la primera camisa
+        console.log("El stock del Azul es " + tienda["productos"][0]["variantes"][1]["stock"]);
+        console.log("");
+
+        // 5 Imprimir el tipo de producto y precio de cada producto en la tienda
+        for (i = 0; i < tienda["productos"].length; i++){
+            console.log(tienda["productos"][i]["tipo"] + " a $" + tienda["productos"][i]["precio"]);
+        }
+        console.log("");
+
+        // 6 Imprimir el nombre de cada producto y sus variantes disponibles
+        tienda["productos"].forEach((shop) => {
+            console.log(shop["nombre"] + ":");
+              shop["variantes"].forEach((vara) => {
+                console.log(vara["color"]);
+            });
+            console.log("");
+        });
+        console.log("");
+
+        // 7 Calcular el total de stock de todas las variantes de todos los productos en la tienda
+        tienda["productos"].forEach((shop) => {
+            var p = 0
+              shop["variantes"].forEach((vara) => {
+                p += vara["stock"];
+            });
+            console.log(p);
+        });
+        console.log("");
+
+        // 8 Encontrar el producto con el mayor precio en la tienda 
+        var n = 0;
+        tienda["productos"].forEach((shop) => {
+            if (n < shop["precio"]){
+                n = shop["precio"];
+            }      
+            return n;
+        });
+        console.log(n);
+
+        console.log(tienda);
+    </script>
+
+</body>
+</html>

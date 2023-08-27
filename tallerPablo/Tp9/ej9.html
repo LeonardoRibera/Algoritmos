@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ricas Pitusas</title>
+</head>
+
+<body>
+
+    valor1: <input id="valor1" type="text" value=""><br>
+    valor2: <input id="valor2" type="text" value=""><br>
+    valor3: <input id="valor3" type="text" value=""><br>
+    <input
+        onclick="sumar((parseInt(document.getElementById('valor1').value)),(parseInt(document.getElementById('valor2').value)),(parseInt(document.getElementById('valor3').value)))"
+        id="verificar" type="button" value="sumar">
+    <script>
+        function sumar(v1, v2, v3) {
+            var resultado = v1 + v2 + v3;
+            console.log(resultado);
+            alert("el resultado de la suma es: " + resultado);
+            return resultado;
+        }
+
+    </script>
+</body>
+
+</html>

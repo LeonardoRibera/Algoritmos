@@ -1,0 +1,13 @@
+body{
+    background-color: #3d776e;
+}
+.div[id='target']{
+    border-radius: 5px;
+    border: solid 2px #3d4d77;
+    background-color: #2b2b2b;
+
+}
+p{
+    color: white;
+    size: 10px;
+}

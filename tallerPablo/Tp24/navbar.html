@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous"
+        href="style.css">
+
+</head>
+
+<style>
+    div[id='target'] {
+        background-color: rgb(101, 123, 133);
+    }
+
+    div[id='a'] {
+        background-color: rgb(54, 54, 54);
+        border: solid 3px #000000;
+        margin-bottom: 3px;
+        border-radius: 23px;
+        margin: 2%;
+        padding: 0px 30px 0px 30px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: transform .1s;
+
+    }
+
+    div[id='a'].hover {
+        background-color: rgb(54, 54, 54);
+        border: solid 3px #000000;
+        margin-bottom: 3px;
+        border-radius: 23px;
+        margin: 2%;
+        transform: (1.5);
+    }
+
+    p {
+        color: rgb(213, 213, 213);
+        font-size: 150%;
+    }
+
+    h1 {
+        color: rgb(213, 213, 213);
+    }
+
+    img {
+        margin: 0px 20px 0px 35px;
+        height: 75%;
+        border-radius: 100%;
+    }
+
+    div.col-3:hover {
+        transform: scale(1.2);
+        /* (120% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+    }
+</style>
+
+<body>
+    <script>
+        function page(pagina) {
+
+            $.ajax({
+                url: pagina,
+                type: 'GET',
+                dataType: 'html',
+                success: function (data) {
+                    $("#content").html(data);
+                }
+            });
+
+        }
+
+
+        function Rick_and_Morty(hola) {
+            $(document).ready(function () {
+                $.ajax({
+                    url: 'https://rickandmortyapi.com/api/character/?page=19',
+                    type: 'GET',
+                    dataType: 'json',
+                    async: false,
+                    success: function (data) {
+                        vivos = 0;
+                        muertos = 0;
+                        capitulos = 0;
+                        str = "";
+                        str += "<div id='target' class='row'>";
+                        for (i = 0; i < data['results'].length; i++) {
+                            str += "<div id='a' class='col-3'>";
+                            str += "<h1>" + data['results'][i]['name'] + "</h1><br>";
+                            str += "<img src = '" + data['results'][i]['image'] + "'>";
+                            $.ajax({
+                                url: data['results'][i]['url'],
+                                type: 'GET',
+                                dataType: 'json',
+                                async: false,
+                                success: function (dataUrl) {
+                                    // str += "<p>" + dataUrl['gender'] + "</p><br>" + "<p>" + dataUrl['status'] + "</p><br>" + "<p>" + dataUrl['species'] + "</p><br><p>" + dataUrl['location']['name'] + "</p><br><p>" + dataUrl['origin']['name'] + "</p><br><p>" + dataUrl['type'] + "</p>";
+                                    str += "</div>";
+                                }
+                            });
+                        }
+                        str += "</div>";
+                        $("#content").html(str);
+                    }
+                })
+                $("#cargando").hide();
+            })
+        }
+
+        function info(a) {
+            $(document).ready(function () {
+                var capitulos = 0;
+                var pj_alive = 0;
+                var pj_dead = 0;
+                var XD = 0;
+                for (x = 1; x < 4; x++) {
+                    $.ajax({
+                        url: 'https://rickandmortyapi.com/api/episode?page=' + x,
+                        type: 'GET',
+                        dataType: 'json',
+                        async: false,
+                        success: function (data) {
+                            for (p = 0; p < data['results'].length; p++) {
+                                capitulos++;
+                            }
+                        }
+                    })
+                    $("#cargando").hide();
+                }
+
+                for (k = 1; k < 43; k++) {
+                    $.ajax({
+                        url: 'https://rickandmortyapi.com/api/character?page=' + k,
+                        type: 'GET',
+                        dataType: 'json',
+                        async: false,
+                        success: function (data) {
+                            for (s = 0; s < data['results'].length; s++) {
+                                if (data['results'][s]['status'] == 'Alive') {
+                                    pj_alive++;
+                                } else if (data['results'][s]['status'] == 'Dead') {
+                                    pj_dead++;
+                                } else {
+                                    XD++;
+                                }
+                            }
+                        }
+                    })
+                    $("#cargando").hide();
+                    $("#content").html("Hay " + capitulos + " capitulos <br>" + "Hay " + pj_alive + " personajes vivos, " + pj_dead + " muertos y " + XD + " que no se saben.");
+                }
+            })
+
+
+
+
+        }
+
+
+
+    </script>
+
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#" onclick="page('1.html')">Pagina 1</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" onclick="page('2.html')">Pagina 2</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" onclick="Rick_and_Morty('character')">Rick y Morty</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" onclick="info('next')">info</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div id="cargando">
+        Cargando...
+        <img width="80px" src="Loading_icon.gif">
+    </div>
+    <div id="content"></div>
+</body>
+
+</html>

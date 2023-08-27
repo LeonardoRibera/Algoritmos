@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="si.css">
+</head>
+<style>
+    #tabla1 {
+        background-color: #0000ff;
+        color: aliceblue;
+        margin-bottom: 10px;
+    }
+
+    td {
+        width: 30px;
+        height: 30px;
+    }
+
+    /* td:hover {
+        background-color: #138ffc;
+        cursor: pointer;
+    }  */
+</style>
+
+<body>
+    <script>
+        filas = 9;
+        columnas = 9;
+        n = 1;
+
+        function mostrar(fila, columna, bandera) {
+            //alert("fila: " + fila + " / columna: " + columna);
+            if (bandera==1){
+                document.getElementById(fila+"_"+columna).style.backgroundColor="green";
+            }
+            else {
+                document.getElementById(fila+"_"+columna).style.backgroundColor="blue";
+            }
+        }
+
+        tabla = "<table id='tabla1' border='1'>";
+        for (f = 1; f <= filas; f++) {
+            tabla += "<tr>";
+            for (c = 1; c <= columnas; c++) {
+                tabla += "<td onmouseover ='mostrar(" + f + "," + c + ", 1);' id='"+f+"_"+c+"'  onmouseout ='mostrar(" + f + "," + c + ", 0);'><center>" + (f * c) + "</center></td>";
+            }
+            tabla += "</tr>";
+        }
+        tabla += "</table>";
+        // x = document.getElementById("1_1").innerHTML;
+        // alert(x);
+
+        document.write(tabla);    
+    </script>
+</body>
+
+</html>

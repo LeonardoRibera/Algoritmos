@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RicasPitusas</title>
+</head>
+
+<body>
+
+    <table>
+        <tr>
+            <td>inicio</td>
+            <td><input id="nmr1" type='text' value=""></td>
+        </tr>
+        <tr>
+            <td>final</td>
+            <td><input id="nmr2" type='text' value=""></td>
+        </tr>
+        <tr>
+            <td><input onclick="verificar()" type="button" value="mostrar"></td>
+        </tr>
+    </table>
+
+    <script>
+        function verificar() {
+            var c = a = parseInt(document.getElementById("nmr1").value);
+            var b = parseInt(document.getElementById("nmr2").value);
+            var x = 0;
+            var y = 0;
+            for (a; a <= b; a++, y++) {
+                for (x = 0; x <= y; x++) {
+                    document.write("&nbsp;&nbsp;");
+                }
+                document.write(a + "<br>");
+            }
+            y--;
+            y--;
+            for (b--; b >= c; b--,y--) {
+                for (x = 0; x <= y; x++) {
+                    document.write("&nbsp;&nbsp;");
+                }
+                document.write(b + "<br>");
+            }
+            document.write("termino");
+        }
+        //"<br>" es para bajar en columna.
+        //document.write() escribe lo que pidas en la página web.
+        //alert(i.value);
+    </script>
+</body>
+
+</html>

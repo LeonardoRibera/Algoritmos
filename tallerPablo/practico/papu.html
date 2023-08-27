@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <title>your mom</title>
+</head>
+
+<body>
+    <script>
+        function localizaciones() {
+            var pan = "";
+            $.ajax({
+                url: 'https://rickandmortyapi.com/api/location',
+                type: 'GET',
+                dataType: 'json',
+                async:false,
+                success: function (data) {
+                    for (i = 1; i <= data["info"]["pages"]; i++) {
+                        $.ajax({
+                            url: 'https://rickandmortyapi.com/api/location?page=' + i,
+                            type: 'GET',
+                            dataType: 'json',
+                            async:false,
+                            success: function (data) {
+                               
+                                for (c = 0; c < data["results"].length; c++) {
+                                     pan+="<div style='border:solid 1px;'>"
+                                        pan += data["results"][c]["name"] + "<br>"
+                                        pan += data["results"][c]["type"] + "<br>"
+                                     pan+="</div>"
+                                }
+                            }
+                        })
+                    }               
+                    $('#ohnohermano').html("Hello!!!, I'm Emu Otori, Emu is meaning smile. <br>" + pan)
+                }
+            })
+        }
+
+
+
+
+    </script>
+
+
+    <button onclick="localizaciones()">porque no, supiste entender a mi corazon, lo que habia en él porque no, tuviste el valor de ver quien soy </button>
+    <div id="ohnohermano"></div>
+</body>
+
+</html>
+

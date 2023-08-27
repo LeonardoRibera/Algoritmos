@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous"
+        href="style.css">
+</head>
+
+<body>
+    <script>
+        function page(pagina) {
+
+            $.ajax({
+                url: pagina,
+                type: 'GET',
+                dataType: 'html',
+                success: function (data) {
+                    $("#content").html(data);
+                }
+            });
+
+        }
+
+        function Rick_and_Morty(hola) {
+            $(document).ready(function() {
+
+            })
+            $.ajax({
+                url: 'https://rickandmortyapi.com/api/character',
+                type: 'GET',
+                dataType: 'json',
+                async: false,
+                success: function (data) {
+                    str = "";
+                    for (i = 0; i < 4; i++) {
+                        str += "<div id='target' class='row'>";
+                        str += "<div class='col-3'>";
+                        str += "<h1>" + data['results'][i]['name'] + "</h1>";
+                        str += "<img src = '" + data['results'][i]['image'] + "'>";
+                        str += "</div>";
+                        str += "<div class='col'>";
+                        str += "<p>" + data['results'][i]['gender'] + "</p><br>" + "<p>" + data['results'][i]['status'] + "</p><br>" + "<p>" + data['results'][i]['species'] + "</p><br>";
+                        str += "</div>";
+                        str += "</div>";
+                    }
+                    $("#content").html(str);
+                }
+            });
+        }
+
+
+
+
+    </script>
+
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#" onclick="page('1.html')">Pagina 1</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" onclick="page('2.html')">Pagina 2</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" onclick="Rick_and_Morty('character')">Rick y Morty</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+
+    <div id="content"></div>
+</body>
+
+</html>

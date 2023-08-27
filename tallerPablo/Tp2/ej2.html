@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RicasPitusas</title>
+</head>
+
+<body>
+
+    <table>
+        <tr>
+            <td>Usuario</td>
+            <td><input id="Usuario" type='text' value=""></td>
+        </tr>
+        <tr>
+            <td>Clave</td>
+            <td><input id="Clave" type='password' value=""></td>
+        </tr>
+        <tr>
+            <td><input onclick="verificar()" type="button" value="verificar"></td>
+        </tr>
+    </table>
+
+    <script>
+        function verificar(){
+            var c = document.getElementById("Clave");
+            var i = document.getElementById("Usuario");
+            if ((i.value=="Leonardo")&&(c.value=="277353")){
+                alert("Bienvenido");
+            }
+            else{
+                alert("Usuario o contraseña incorrecta");
+            }
+        }
+        
+        
+        //alert(i.value);
+    </script>
+</body>
+
+</html>

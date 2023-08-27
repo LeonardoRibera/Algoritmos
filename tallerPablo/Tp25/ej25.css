@@ -1,0 +1,110 @@
+body {
+    background-color: #212121;
+    height: 100vh;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+
+div[id='contenedor'] {
+    color: white;
+    padding: 20px;
+    margin: 25px;
+    border-radius: 20px;
+    background-color: rgb(19, 19, 19);
+    border: 3px solid #000000;
+    display: grid;
+    grid-template-columns: 32% auto;
+    width: 74.9%;
+    /*width: 204*/
+    height: 300px;
+    transition: width 0.5s;
+}
+
+.col-6{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+div[id='movie'] {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+div[id='caja1'] {
+    align-content: center;
+    border-radius: 10px;
+    align-items: center;
+}
+
+div[id='caja2'] {
+    align-content: center;
+    position: relative;
+    overflow: hidden;
+    align-items: center;
+    transform: none;
+}
+
+h1 {
+    font-size: bold;
+    margin-top: -5px;
+}
+
+img {
+    display: grid;
+    width: 170px;
+}
+
+.content {
+    position: relative;
+    justify-content: top;
+    width: 100%;
+    gap: 40px;
+}
+
+.btn {
+    width: 8.5em;
+    height: 2.3em;
+    margin: 0.3em;
+    background: black;
+    color: white;
+    border: none;
+    border-radius: 0.625em;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+}
+
+button:hover {
+    color: black;
+}
+
+button:after {
+    content: "";
+    background: white;
+    position: absolute;
+    z-index: -1;
+    left: -20%;
+    right: -20%;
+    top: 0;
+    bottom: 0;
+    transform: skewX(-45deg) scale(0, 1);
+    transition: all 0.5s;
+}
+
+button:hover:after {
+    transform: skewX(-45deg) scale(1, 1);
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+}
+div[id='bot']{
+    align-items: center;
+}
+div[id='pagination']{
+    display: grid;
+    place-content: center;
+}

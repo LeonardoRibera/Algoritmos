@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hola ☺</title>
+</head>
+
+<body>
+    <style>
+        td {
+            text-align: center;
+            padding: 8px;
+        }
+        th {
+            color: #ff1b1b;
+            padding: 12px;
+            text-align: center;
+        }
+    </style>
+
+    <script>
+
+        // var notas = ['Pablo', 'Nadia', 'Marcos', 'Soledad'];
+        // for (i = 0; i < notas.length; i++) {
+        //     console.log(notas[i]);
+        // }
+
+        // var notas = [
+        //     { 'nombre': 'Pablo', 'apellido': 'Fiscella' },
+        //     { 'nombre': 'Nadia', 'apellido': 'Fiscella' },
+        //     { 'nombre': 'Marcos', 'apellido': 'Fiscella' },
+        //     { 'nombre': 'Soledad', 'apellido': 'Fiscella' }
+        // ];
+
+        // for (i = 0; i < notas.length; i++) {
+        //     console.log(notas[i]['nombre'] + ', ' + notas[i]['apellido']);
+        // }
+
+
+
+        // mostrar las notas que obtuvieron cada alumno:
+
+
+        // var alumnos = [
+        //     { 'nombre': 'Pablo', 'apellido': 'Fiscella', 'notas': [10, 2, 3] },
+        //     { 'nombre': 'Nadia', 'apellido': 'Fiscella', 'notas': [10, 5, 8] },
+        //     { 'nombre': 'Marcos', 'apellido': 'Fiscella', 'notas': [10, 4, 10] },
+        //     { 'nombre': 'Soledad', 'apellido': 'Fiscella', 'notas': [10, 2, 5] }
+        // ];
+
+        // for (i = 0; i < alumnos.length; i++) {
+        //     console.log(alumnos[i]['nombre'] + ', ' + alumnos[i]['apellido']);
+        //     for (o = 0; o < alumnos[i]['notas'].length; o++) {
+        //         console.log(alumnos[i]['notas'][o]);
+        //     }
+        // }
+
+
+
+
+
+
+        // crear un promedio de las notas de cada alumno:
+
+        // var alumnos = [
+        //     { 'nombre': 'Pablo', 'apellido': 'Fiscella', 'notas': [10, 2, 3] },
+        //     { 'nombre': 'Nadia', 'apellido': 'Fiscella', 'notas': [10, 10, 10] },
+        //     { 'nombre': 'Marcos', 'apellido': 'Fiscella', 'notas': [10, 4, 5] },
+        //     { 'nombre': 'Soledad', 'apellido': 'Fiscella', 'notas': [10, 2, 5] }
+        // ];
+
+        // for (i = 0; i < alumnos.length; i++) {
+        //     promedio = 0;
+        //     console.log(alumnos[i]['nombre'] + ', ' + alumnos[i]['apellido']);
+        //     for (o = 0; o < alumnos[i]['notas'].length; o++) {
+        //         promedio = promedio + alumnos[i]['notas'][o];
+        //     }
+        //     console.log(promedio / (alumnos[i]['notas'].length));
+        // }
+
+
+
+        // crear una tabla que contenga :
+        //         Nombre. 
+        //         Apellido
+        //         bimestre1
+        //         bimestre2
+        //         bimestre3
+        //         bimestre4
+        //         nota final(promedio):
+
+
+
+
+        tabla = "<table border='1'>";
+
+        var alumnos = [
+            {
+                "nombre": "Pablo",
+                "apellido": "Fiscella",
+                "notas":
+                {
+                    "B1": [10, 4, 5, 4, 10],
+                    "B2": [4, 8, 2, 4, 10],
+                    "B3": [5, 2, 2, 10, 10],
+                    "B4": [10, 3, 8, 4, 10]
+                }
+            },
+            {
+                "nombre": "Maria",
+                "apellido": "Suarez",
+                "notas":
+                {
+                    "B1": [2, 10, 4, 9, 9],
+                    "B2": [4, 4, 3, 6, 10],
+                    "B3": [10, 2, 10, 8, 9],
+                    "B4": [10, 4, 5, 4, 10]
+                }
+            },
+            {
+                "nombre": "Juan",
+                "apellido": "Pedro Leon",
+                "notas":
+                {
+                    "B1": [10, 10, 10, 10, 10],
+                    "B2": [10, 10, 10, 10, 10],
+                    "B3": [10, 10, 10, 10, 10],
+                    "B4": [10, 10, 10, 10, 10]
+                }
+            }
+        ]
+            tabla += "<tr>";
+            tabla += "<th>Nombre</th>";
+            tabla += "<th>Apellido</th>";
+            tabla += "<th>Bimestre 1</th>";
+            tabla += "<th>Bimestre 2</th>";
+            tabla += "<th>Bimestre 3</th>";
+            tabla += "<th>Bimestre 4</th>";
+            tabla += "<th>Nota final</th>";
+            tabla += "</tr>";
+
+        for (i = 0; i < alumnos.length; i++) {
+
+            nota_final = 0;
+            tabla += "<tr>"
+            tabla += "<td>" + alumnos[i]["nombre"] + "</td>"
+            tabla += "<td>" + alumnos[i]["apellido"] + "</td>";
+            
+            for (p = 1; p < 5; p++) {
+                
+                for (o = 0, promedio = 0; o < alumnos[i]['notas']['B' + p].length; o++) {
+                promedio += alumnos[i]['notas']['B' + p][o];
+                }
+                var promedio_total
+                promedio_total = promedio / alumnos[i]['notas']['B' + p].length;
+                tabla += "<td>" + promedio_total + "</td>";
+                nota_final += promedio_total;
+            }
+
+            tabla += "<td>" + (nota_final / 4).toFixed(2) + "</td>";
+            tabla += "</tr>";
+        }
+
+        tabla += "</table>";
+        document.write(tabla);
+        ;
+    </script>
+
+</body>
+
+</html>

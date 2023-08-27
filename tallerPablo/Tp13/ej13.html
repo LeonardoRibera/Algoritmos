@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!--
+        Con este array:
+
+        2. Agregar dos autos antes de Volvo LISTO
+        1. Agregar dos autos al final LISTO
+        3. Eliminar uno x LISTO
+        4. Eliminar el primero LISTO
+        5. Eliminar el ultimo LISTO
+        6. Insertar antes del primero  
+        7. Insertar antes del ultimo
+        8. Insertar despues de x
+
+        cars = ["Saab", "Volvo", "BMW","FIAT"];
+    -->
+    <script>
+        var cars = ["Saab", "Volvo", "BMW", "FIAT"];
+        var i;
+        cars.push("Toyota", "Volkswagen");             // agregar Toyota y Volkswagen a lo ultimo
+        cars.splice(1, 0, "Renoult", "Nissan");         // agregar desde la posicion 1
+        cars.splice(2, 1); // el primer numero indica la posicion de donde quieres empezar a modificar, el segundo numero indica la cantidad de eliminados.
+        cars.pop();                                    // remover el ultimo
+        cars.shift();                                  // remover el primero
+        cars.splice(0, 0, "Chevrolet");
+        cars.splice(6, 0, "Ferraris");
+        cars.splice(3, 0, "Ford");
+        for (i = 0; i < cars.length; i++) {
+            document.write(cars[i] + "<br>");
+        }
+
+    </script>
+</body>
+
+</html>

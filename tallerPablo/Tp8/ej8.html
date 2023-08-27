@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página</title>
+    <link rel="stylesheet">
+</head>
+<style>
+    #tabla1 {
+        background-color: blue;
+        color: aliceblue;
+        margin-bottom: 10px;
+    }
+
+    td {
+        height: 20px;
+        /* y*/
+        width: 20px;
+        /* x*/
+    }
+</style>
+
+<body>
+    <div id='divHeader'>
+        filas:
+        <input id="filas" type="text" value="">
+        columnas:
+        <input id="columnas" type="text" value="">
+        <input onclick="ejecutar()" type="button" value="ejecutar">
+        <input onclick='volver()' type='button' value='volver' style="display:none">
+        <br>
+    </div>
+    <div id='divTable'></div>
+    <script>
+
+        function ejecutar() {
+            filas = parseInt(document.getElementById("filas").value);
+            columna = parseInt(document.getElementById("columnas").value);
+            document.getElementById('divTable').style = 'display:';
+            tabla = "<table id='tabla1' border='1'>";
+            for (f = 1; f <= filas; f++) {
+                tabla += "<tr>";
+                for (c = 1; c <= columna; c++) {
+                    tabla += "<td align= 'center'>" + (f * c) + "</td>";
+                }
+                tabla += "</tr>";
+            }
+            tabla += "</table>";
+            document.getElementById('divTable').innerHTML = tabla + "<input onclick='volver()' type='button' value='volver'>"
+            document.getElementById('divHeader').style = "display:none";
+            return;
+        }
+        function volver() {
+            document.getElementById('divTable').style = 'display:none'; 
+            document.getElementById('divHeader').style = 'display:contents';
+            return;
+        }
+    </script>
+
+</body>
+
+</html>

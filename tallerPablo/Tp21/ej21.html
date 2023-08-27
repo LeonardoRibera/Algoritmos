@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        const tiendas = [
+            {
+                "nombre": "Adidas",
+                "productos": [
+                    {
+                        "id": 1,
+                        "tipo": "Camisa",
+                        "nombre": "Camisa",
+                        "precio": 20,
+                        "variantes": [
+                            { "color": "Rojo", "stock": 50 },
+                            { "color": "Azul", "stock": 35 },
+                            { "color": "Verde", "stock": 54 },
+                            { "color": "Amarillo", "stock": 32 }
+                        ]
+                    },
+                    {
+                        "id": 2,
+                        "tipo": "Pantalón",
+                        "nombre": "Pantalón",
+                        "precio": 31,
+                        "variantes": [
+                            { "color": "Negro", "stock": 20 },
+                            { "color": "Gris", "stock": 10 }
+                        ]
+                    }
+                ]
+            },
+            {
+                "nombre": "Nike",
+                "productos": [
+                    {
+                        "id": 1,
+                        "tipo": "Camisa",
+                        "nombre": "Camisa",
+                        "precio": 25,
+                        "variantes": [
+                            { "color": "Rojo", "stock": 11 },
+                            { "color": "Azul", "stock": 45 },
+                            { "color": "Verde", "stock": 82 }
+
+                        ]
+                    },
+                    {
+                        "id": 2,
+                        "tipo": "Pantalón",
+                        "nombre": "Pantalón",
+                        "precio": 30,
+                        "variantes": [
+                            { "color": "Negro", "stock": 15 },
+                            { "color": "Gris", "stock": 12 }
+                        ]
+                    }
+                ]
+            }
+        ];
+
+        // 1 Imprimir el nombre de todas las tiendas
+        tiendas.forEach((name) => {
+            console.log(name["nombre"]);
+        });
+        console.log("");
+
+        // 2 Encontrar el producto más caro de cada tienda
+        tiendas.forEach((shop) => {
+            var n = 0;
+            shop["productos"].forEach((prod) => {
+                if (n < prod["precio"]) {
+                    n = prod["precio"];
+                }
+            });
+            console.log("El producto mas caro de la tienda es $" + n);
+        });
+        console.log("");
+
+        // 3 Calcular el valor total del inventario de cada tienda (precio * stock de cada variante)
+        tiendas.forEach((shop) => {
+            s = 0;
+            shop["productos"].forEach((producto) => {
+                producto["variantes"].forEach((vari) => {
+                    s += producto["precio"] * vari["stock"];
+                });
+            });
+            console.log("Inventario: " + s);
+        });
+        console.log("");
+
+        // 4 Encontrar la tienda con el mayor stock de una variante específica de un producto
+        z = 0;
+        f = "";
+        d = "";
+        tiendas.forEach((shoping) => {
+            shoping["productos"].forEach((pr) => {
+                pr["variantes"].forEach((variant) => {
+                    if (z < variant["stock"]) {
+                        z = variant["stock"];
+                        f = shoping["nombre"];
+                        d = variant["color"];
+                    }
+                });
+
+            });
+        });
+        console.log(f + " tiene el mayor stock contando con " + z + " stocks del " + d);
+        console.log("");
+
+        // 5 Obtener un array con los nombres de todos los productos de todas las tiendas
+        var array = [];
+        tiendas.forEach(shop => {
+            shop["productos"].forEach(producto => {
+                array.push(producto["nombre"]);
+            });
+        });
+        console.log(array);
+        console.log("");
+
+        // 6 Verificar si todas las tiendas tienen al menos un producto con stock mayor a 10
+        k = true;
+        tiendas.forEach(shop => {
+            shop["productos"].forEach(producto => {
+                producto["variantes"].forEach(vari => {
+                    if (vari["stock"] < 10) {
+                        k = false;
+                    }
+                });
+            });
+        });
+        if (k == true) {
+            console.log("Todas las tiendas contienen un stock mayor a 10");
+        } else {
+            console.log("Hay alguna tienda que no contiene un stock mayor a 10");
+        }
+        console.log("");
+
+        // 7 Calcular el promedio de precios de todos los productos de cada tienda
+        tiendas.forEach(shop => {
+            promedio = 0;
+            q = 0
+            shop["productos"].forEach(producto => {
+                promedio += producto["precio"];
+                q = shop["productos"].length;
+            });
+            console.log("El promedio de los precios de la tienda es " + promedio / q);
+        });
+
+        console.log("");
+
+        // 8 Encontrar la tienda con la mayor cantidad de variantes de productos
+        g = 0;
+        h = "";
+        tiendas.forEach(shop => {
+            shop["productos"].forEach(producto => {
+                l = 0;
+                producto["variantes"].forEach(vari => {
+                    l++;
+                });
+                if (l > g) {
+                    h = shop["nombre"]
+                    g = l;
+                }
+            });
+        });
+        console.log("La tienda con mayor cantidad de variantes de productos es " + h);
+
+
+
+    </script>
+</body>
+
+</html>
