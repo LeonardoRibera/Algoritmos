@@ -4,32 +4,35 @@ body {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
+a{
+    cursor: pointer;
+}
 
 div[id='contenedor'] {
     color: white;
     padding: 20px;
-    margin: 25px;
+    margin: 15px;
     border-radius: 20px;
     background-color: rgb(19, 19, 19);
     border: 3px solid #000000;
     display: grid;
-    grid-template-columns: 32% auto;
-    width: 74.9%;
-    /*width: 204*/
+    grid-template-columns: 32% 68%;
+    width: 100%;
     height: 300px;
     transition: width 0.5s;
 }
-
-.col-6{
+div[id='contenedor-flex'] {
     display: flex;
-    flex-direction: row;
     flex-wrap: wrap;
+    flex-direction: column
 }
 
 div[id='movie'] {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    margin: 10px;
+    justify-content: flex-start;
+    width: 60%;
+    align-items: center;
+    flex-basis: calc(100% - 10px);
 }
 
 div[id='caja1'] {

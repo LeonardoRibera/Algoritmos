@@ -17,10 +17,12 @@
 
 <body>
     <script>
-        let pag = 1
-        var genero = 0
+        var a = "";
+        var b = "";
+        let pag = 1;
+        var genero = 0;
         function peli(gen) {
-            var src = "";
+            var src = "<div id='contenedor-flex'>";
             $(document).ready(function () {
                 $.ajax({
                     url: 'https://api.themoviedb.org/3/discover/movie?api_key=ed6a6c3eff06810a0c74745800fe74bf&with_genres=' + gen + '&page=' + pag,
@@ -29,34 +31,61 @@
                     async: false,
                     success: function (data) {
                         for (i = 0; i < data["results"].length; i++) {
-                            src += "<div id='contenedor' class='col-6'>"
+                            src += "<div id='contenedor' class='row col-6'>"
                             src += "<div id='caja1' class='col-5'>"
-                                src += "<img src ='https://image.tmdb.org/t/p/w500" + data["results"][i]["poster_path"] + " '>" + "<br>"
-                                src += "</div>"
-                                src += "<div id='caja2' class='col'>"
-                                    src += "<h1>" + data["results"][i]["original_title"] + "</h1>" + "<br>"
-                                    src += "Languague: " + data["results"][i]["original_language"] + "<br><br>"
-                                    src += "Description: <br>" + data["results"][i]["overview"] + "<br><br>"
-                                    src += "Rate: " + data["results"][i]["vote_average"]
-                                    src += "</div>"
-                                    src += "</div>"
-                                }
-                            }
-                        })
-                        $("#movie").html(src)
-                    })
+                            src += "<img src ='https://image.tmdb.org/t/p/w500" + data["results"][i]["poster_path"] + " '>" + "<br>"
+                            src += "</div>"
+                            src += "<div id='caja2' class='col'>"
+                            src += "<h1>" + data["results"][i]["original_title"] + "</h1>" + "<br>"
+                            src += "Languague: " + data["results"][i]["original_language"] + "<br><br>"
+                            src += "Description: <br>" + data["results"][i]["overview"] + "<br><br>"
+                            src += "Rate: " + data["results"][i]["vote_average"]
+                            src += "</div>"
+                            src += "</div>"
+                        }
+                    }
+                })
+                src += "</div>"
+                $("#movie").html(src)
+            })
             genero = gen;
         }
 
-        function cambiarPagina(pages){
-            pag += pages;
-            if (pag < 1){
-                pag = 1
+        function cambiarPagina(pages) {
+
+            var s = "";
+            for (i = 1; i < 7; i++) {
+                s = parseInt(document.getElementById('pagination' + i).innerText)
+                document.getElementById("pagination" + i).innerHTML = s + pages;
+
+
             }
+            if (pages > 0) {
+                document.getElementById("pagination7").innerHTML = parseInt(document.getElementById('pagination7').innerText) + 10;
+                document.getElementById("pagination8").innerHTML = parseInt(document.getElementById('pagination8').innerText) + 10;
+            } else {
+                document.getElementById("pagination7").innerHTML = parseInt(document.getElementById('pagination7').innerText) - 10;
+                document.getElementById("pagination8").innerHTML = parseInt(document.getElementById('pagination8').innerText) - 10;
+            }
+
+            if (parseInt(document.getElementById('pagination1').innerText) == 0) {
+                for (i = 1; i < 7; i++) {
+                    s = parseInt(document.getElementById('pagination' + i).innerText)
+                    document.getElementById("pagination" + i).innerHTML = s + 1;
+                }
+                document.getElementById("pagination7").innerHTML = 10;
+                document.getElementById("pagination8").innerHTML = 20;
+            }
+
+
+        }
+
+        function paginator(hola) {
+            pag = hola;
             peli(genero);
         }
-        
-        
+
+
     </script>
     <div class="content">
         <button class="btn" onclick="peli(28)">Action</button>
@@ -70,20 +99,44 @@
         <button class="btn" onclick="peli(10752)">War</button>
         <button class="btn" onclick="peli(80)">Crimen</button>
     </div>
-    <div id="movie" class="col-6"></div>
+    
+        <div id="movie" class="col-6"></div>
+    
     <div id="pagination">
         <nav aria-label="Page navigation example">
             <ul class="pagination">
                 <li class="page-item">
-                    <a onclick="cambiarPagina(-1)" class="page-link" href="#" aria-label="Previous">
+                    <a onclick="cambiarPagina(-1)" class="page-link" aria-label="Previous">
                         <span aria-hidden="true">&laquo;</span>
                     </a>
                 </li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item"><a name="paginador" id="pagination1"
+                        onclick="paginator(document.getElementById('pagination1').innerText)" class="page-link"
+                        href="#">1</a></li>
+                <li class="page-item"><a name="paginador" id="pagination2"
+                        onclick="paginator(document.getElementById('pagination2').innerText)" class="page-link"
+                        href="#">2</a></li>
+                <li class="page-item"><a name="paginador" id="pagination3"
+                        onclick="paginator(document.getElementById('pagination3').innerText)" class="page-link"
+                        href="#">3</a></li>
+                <li class="page-item"><a name="paginador" id="pagination4"
+                        onclick="paginator(document.getElementById('pagination4').innerText)" class="page-link"
+                        href="#">4</a></li>
+                <li class="page-item"><a name="paginador" id="pagination5"
+                        onclick="paginator(document.getElementById('pagination5').innerText)" class="page-link"
+                        href="#">5</a></li>
+                <li class="page-item"><a name="paginador" id="pagination6"
+                        onclick="paginator(document.getElementById('pagination6').innerText)" class="page-link"
+                        href="#">6</a></li>
+                <li class="page-item"><a class="page-link" href="#">...</a></li>
+                <li class="page-item"><a name="paginador" id="pagination7"
+                        onclick="paginator(document.getElementById('pagination7').innerText)" class="page-link"
+                        href="#">10</a></li>
+                <li class="page-item"><a name="paginador" id="pagination8"
+                        onclick="paginator(document.getElementById('pagination8').innerText)" class="page-link"
+                        href="#">20</a></li>
                 <li class="page-item">
-                    <a onclick="cambiarPagina(1)" class="page-link" href="#" aria-label="Next">
+                    <a onclick="cambiarPagina(1)" class="page-link" aria-label="Next">
                         <span aria-hidden="true">&raquo;</span>
                     </a>
                 </li>
